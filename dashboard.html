@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #0f1b26;
+            color: #fff;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: #121f2c;
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff9800;
+        }
+
+        .menu a {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #cfd8dc;
+            transition: background 0.3s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: #1f3447;
+            color: #fff;
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            padding: 20px 30px;
+            overflow-y: auto;
+        }
+
+        /* Topbar */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .topbar .user {
+            font-weight: bold;
+        }
+
+        /* Cards */
+        .card {
+            background: #182734;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .card h4 {
+            margin-top: 0;
+        }
+
+        /* Progress Circle */
+        .progress-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: conic-gradient(#ff9800 0% 75%, #2c3e50 75%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .welcome {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        /* Stats Bar */
+        .bar {
+            height: 8px;
+            background: #263746;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            background: #4caf50;
+            width: 0;
+            animation: grow 1.5s forwards;
+        }
+
+        @keyframes grow {
+            to { width: var(--value); }
+        }
+
+        /* Button */
+        .btn {
+            background: #ff9800;
+            color: #000;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3>MyLearning</h3>
+        <div class="menu">
+            <a class="active">Dashboard</a>
+            <a>Kursus</a>
+            <a>Statistik</a>
+            <a>Uji Coba</a>
+            <a>Profil</a>
+            <a onclick="logout()" style="cursor:pointer;color:#ff5252;">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <!-- Topbar -->
+        <div class="topbar">
+            <h2>Halo, Anya!</h2>
+            <div class="user">Level B1</div>
+        </div>
+
+        <!-- Welcome Card -->
+        <div class="card welcome">
+            <div>
+                <h4>15 Hari Beruntun!</h4>
+                <p>Lanjutkan pembelajaran untuk mempertahankan streak Anda.</p>
+                <a class="btn">Lanjutkan Pelajaran</a>
+            </div>
+            <div class="progress-circle">75%</div>
+        </div>
+
+        <!-- Grid Cards -->
+        <div class="grid">
+
+            <div class="card">
+                <h4>Kursus Prancis Dasar (A1)</h4>
+                <p>Unit 6 · 85% selesai</p>
+                <div class="bar">
+                    <span style="--value:85%"></span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4>Statistik Mingguan</h4>
+                <p>Waktu belajar</p>
+                <div class="bar">
+                    <span style="--value:60%;background:#03a9f4"></span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4>Papan Peringkat</h4>
+                <p>Komunitas & Mitra Bicara</p>
+                <div class="bar">
+                    <span style="--value:40%;background:#ab47bc"></span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4>Target Hari Ini</h4>
+                <p>30 menit belajar</p>
+                <div class="bar">
+                    <span style="--value:70%;background:#ff7043"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function logout() {
+        if (confirm("Yakin ingin logout?")) {
+            window.location.href = "login.html";
+        }
+    }
+</script>
+
+</body>
+</html>
